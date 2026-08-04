@@ -14,6 +14,7 @@ public class User {
     private Long id;
     @OneToOne(mappedBy = "user")
     private Account account;
+    @Column(nullable = false, unique = true)
     private String username;
     private String password;
     private String name;
