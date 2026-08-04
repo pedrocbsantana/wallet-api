@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.pedrocbsantana.wallet.exception.UsernameAlreadyExistsException;
 import com.pedrocbsantana.wallet.model.Account;
 import com.pedrocbsantana.wallet.model.User;
 import com.pedrocbsantana.wallet.repository.AccountRepository;
@@ -29,7 +30,7 @@ public class UserService {
     @Transactional
     public User registerUser(String username, String password, String name) {
         if (userRepository.existsByUsername(username)) {
-            throw new IllegalArgumentException("Username já cadastrado: " + username);
+            throw new UsernameAlreadyExistsException(username);
         }
 
         User user = new User();

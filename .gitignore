@@ -35,3 +35,4 @@ build/
 
 ### Config sensível ###
 application.properties
+context.md
